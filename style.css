@@ -1,0 +1,282 @@
+/* ==== RESET & GLOBAL ==== */
+*,
+*::before,
+*::after {
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --color-bg: #151519;
+    --color-txt: white;
+    --color-sec1: #28282B;
+
+    --font-h: "Space Grotesk", sans-serif;
+    --font-p: "Plus Jakarta Sans", sans-serif;
+}
+
+html {
+    background-color: var(--color-bg);
+    color: var(--color-txt);
+    font-size: 18px;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    min-height: 100vh;
+}
+
+main {
+    padding: 3rem;
+}
+
+/* ==== GENERAL TAGS ==== */
+
+p {
+    font-family: var(--font-p);
+}
+
+/* ==== GENERAL SELECTORS ==== */
+
+.heading-lg {font-size: 2.6rem; font-family: var(--font-h);}
+.heading-md {font-size: 2.4rem; font-family: var(--font-h);}
+.heading-sm {font-size: 2.2rem; font-family: var(--font-h);}
+
+/* 
+.section-lg {height: 900px;}
+.section-md {height: 700px;}
+.section-sm {height: 500px;}
+*/
+
+.sidebar {
+    background-color: var(--color-sec1);
+    padding: 2rem;
+    border-right: 1px solid #333;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 3rem;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.brand h3 {
+    font-size: 1.1rem;
+    color: var(--color-txt);
+    margin: 0;
+}       
+
+.input-group, .porcentaje-riesgo {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #a1a1aa
+}
+
+.input-wrapper {
+    background-color: #1a1d23;
+    border: 1px solid #3f3f46;
+    border-radius: 8px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    transition: border-color 0.2s;
+}
+
+.input-wrapper:focus-within {
+    border-color: #2563eb;
+}
+
+.input-wrapper span {
+    color: #71717a;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.input-wrapper input {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    font-family: var(--font-h);
+    font-size: 1rem;
+    outline: none
+}
+
+
+/* Quitar flechas de los inputs numéricos */
+
+/* Para Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Para Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* === MAIN CONTENT STYLES === */
+
+/* 1. Tipografías y Encabezados del Main */
+header {
+    margin-bottom: 3rem; /* Separamos el título del resto del contenido */
+}
+
+h1 {
+    font-size: 2rem;
+    font-family: var(--font-h);
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-family: var(--font-h);
+    margin-bottom: 1rem;
+    color: #e4e4e7;
+}
+
+.muted {
+    color: #a1a1aa;
+    font-size: 0.9rem;
+}
+
+/* 2. Sección de Ejecución (Input Gigante) */
+.execution-section {
+    background-color: var(--color-sec1); /* Mismo fondo que el Sidebar */
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center; /* Todo centrado */
+    border: 1px solid #333;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.big-input-wrapper {
+    display: inline-flex; /* Para que se ajuste al contenido */
+    align-items: center;
+    background-color: #1a1d23;
+    border: 1px solid #3f3f46;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    margin: 1.5rem 0;
+}
+
+.big-input-wrapper input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 3rem; /* Texto gigante */
+    font-weight: bold;
+    width: 120px;
+    text-align: right; /* Número alineado a la derecha */
+    outline: none;
+    font-family: var(--font-h);
+}
+
+.big-input-wrapper span {
+    font-size: 1rem;
+    color: #71717a;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* 3. Botón principal (Glowing Blue) */
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(37,99,235,0.3); /* Resplandor azul de sombra */
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px); /* Se eleva un poco al pasar el mouse */
+}
+
+.btn-primary:active {
+    transform: translateY(0); /* Vuelve a bajar al hacer click */
+}
+
+/* 4. Grid de Resultados (Tarjetas) */
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.result-card {
+    padding: 2rem;
+    border-radius: 16px;
+    color: white;
+    position: relative; /* Para posicionar elementos si hace falta */
+}
+
+.btn-copy {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-copy:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.btn-copy:active {
+    transform: scale(0.95);
+}
+
+.btn-copy.copied {
+    background-color: #10b981;
+    color: white;
+}
+
+/* Gradientes para las tarjetas */
+.blue-card {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+}
+
+.green-card {
+    background: linear-gradient(135deg, #064e3b 0%, #10b981 100%);
+}
+
+.big-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    font-family: var(--font-h);
+    margin: 1rem 0;
+    line-height: 1;
+}

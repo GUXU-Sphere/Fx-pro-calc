@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practicanding</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <img class="logo" src="./assets/images/icons/guxulogo.svg" alt="Logo corporativo GUXU Sphere">
+            <h3>Fx Pro Calc</h3>
+        </div>
+        <div class="sidebar-section">
+            <h4>CONFIGURACIÓN DE CUENTAS</h4>
+            <div class="input-group">
+                <label for="cap1">Capital de Cuenta 1 (USD)</label>
+                <div class="input-wrapper">
+                    <span>$</span> <input id="cap1" type="number" value="50000">
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="cap2">Capital de Cuenta 2 (USD)</label>
+                <div class="input-wrapper">
+                    <span>$</span> <input id="cap2" type="number" value="10000">
+                </div>
+            </div>
+            <div class="porcentaje-riesgo">
+                <label for="risk">Porcentaje de riesgo</label>
+                <div class="input-wrapper">
+                    <input id="risk" type="number" value="0.5" step="0.1"> <span>%</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    
+    <main>
+        <header>
+            <h1>Calculadora de Riesgo para GBPUSD</h1>
+            <p>Gestión de riesgo para 2 cuentas en simultáneo</p>
+        </header>
+        <section class="execution-section">
+            <h2>Parámetros de Ejecución</h2>
+            <p class="muted">Ingresa el SL en pips</p>
+            <div class="big-input-wrapper">
+                <input id="sl-input" type="number" value="10"> <span>PIPS</span>
+            </div>
+            <button id="btn-calcular" class="btn-primary">Calcular</button>
+        </section>
+        <section class="results-grid">
+            <div class="result-card blue-card">
+                <span>Lotaje de Cuenta 1</span>
+                <button class="btn-copy" data-target="res-lot-1" title="Copiar lotaje">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                </button>
+                <div id="res-lot-1" class="big-number">0.00</div>
+                <div id="res-amount-1"><span>$0.00 Risk</span></div>
+            </div>
+            <div class="result-card green-card">
+                <span>Lotaje de Cuenta 2</span>
+                <button class="btn-copy" data-target="res-lot-2" title="Copiar lotaje">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+        </button>
+                <div id="res-lot-2" class="big-number">0.00</div>
+                <div id="res-amount-2"><span>$0.00 Risk</span></div>
+            </div>
+        </section>
+         <!-- 
+        <section class="summary-card">
+            <h3>Resumen de Parámetros Calculados</h3>
+            <div class="total-risk">
+                <span class="label">TOTAL DE RIESGO POR CUENTA</span>
+                <div class="values">
+                    <span id="sum-risk-1">monto cuenta 1</span> <span id="sum-risk-2">monto cuenta 2</span>
+                </div>
+            </div>
+        </section>
+        -->
+    </main>
+<script src="script.js"></script> </body>
+</html>
