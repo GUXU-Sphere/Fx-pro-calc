@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
         risk2: document.getElementById('res-amount-2')
     };
 
+    const labels = {
+        acc1: document.getElementById('label-acc-1'),
+        acc2: document.getElementById('label-acc-2')
+    };
+
     // 3. FUNCIÓN DE FORMATO DE DINERO (Para que se vea bonito: $250.00)
     const formatoDinero = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -60,6 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cuenta 2
         outputs.lot2.textContent = lotaje2.toFixed(2);
         outputs.risk2.textContent = `${formatoDinero.format(riesgoMonetario2)} Risk`;
+
+        // Actualizar los títulos con los pips confirmados
+        labels.acc1.textContent = `Lotaje de Cuenta 1 para ${stopLoss} pips`
+        labels.acc2.textContent = `Lotaje de Cuenta 2 para ${stopLoss} pips`
+        
     }
 
     // 5. EVENT LISTENERS (Escuchar el clic)
