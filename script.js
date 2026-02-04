@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
         minimumFractionDigits: 2
     });
 
+    // Función auxiliar: Cortar a 2 decimales sin redondear hacia arriba (Floor)
+    function redondearAbajo(numero) {
+        return Math.floor(numero * 100) / 100;
+    }
+
     // 4. LÓGICA DE CÁLCULO
     function calcularRiesgo() {
         // Obtenemos los valores numéricos de los inputs
@@ -56,14 +61,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const lotaje1 = riesgoMonetario1 / (stopLoss * VALOR_PIP);
         const lotaje2 = riesgoMonetario2 / (stopLoss * VALOR_PIP);
 
+        // Fórmula inicial (con todos los decimales)
+        let lotajeRaw1 = riesgoMonetario1 / (stopLoss * VALOR_PIP);
+        let lotajeRaw2 = riesgoMonetario2 / (stopLoss * VALOR_PIP);
+
+        // Lógica de protección de capital (Floor)
+        let lotajeFinal1 = redondearAbajo(lotajeRaw1)
+        let lotajeFinal2 = redondearAbajo(lotajeRaw2)
+
+
         // --- ACTUALIZACIÓN DE LA INTERFAZ ---
 
-        // Cuenta 1
-        outputs.lot1.textContent = lotaje1.toFixed(2); // Redondeamos a 2 decimales
+        // Lógica para Cuenta 1
+        if (lotajeFinal1 < 0.01) {
+            outputs.lot1.textContent = "0.01"; // Forzamos el mínimo operativo.
+            outputs.lot1.classList.add('text-danger'); // Se asigna la clase que creamos en CSS de alerta roja.
+        } else {
+        outputs.lot1.textContent = lotajeFinal1.toFixed(2); // Usamos el redondeo para asegurarnos de que 0.5 sea 0.50, el valor numérico ya fue recortado hacia abajo previamente.
+        outputs.lot1.classList.remove('text-danger');
+        }
         outputs.risk1.textContent = `${formatoDinero.format(riesgoMonetario1)} Risk`;
-
-        // Cuenta 2
-        outputs.lot2.textContent = lotaje2.toFixed(2);
+        
+        // Lógica para Cuenta 2
+        if (lotajeFinal2 < 0.01) {
+            outputs.lot2.textContent = "0.01"; // Forzamos el mínimo operativo.
+            outputs.lot2.classList.add('text-danger'); // Se asigna la clase que creamos en CSS de alerta roja.
+        } else {
+        outputs.lot2.textContent = lotajeFinal2.toFixed(2);
+        outputs.lot2.classList.remove('text-danger');
+        }
         outputs.risk2.textContent = `${formatoDinero.format(riesgoMonetario2)} Risk`;
 
         // Actualizar los títulos con los pips confirmados
